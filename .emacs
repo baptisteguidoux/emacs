@@ -24,4 +24,10 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; Auto Pairs 
+(electric-pair-mode t)
+;; Line Numbers
+(global-linum-mode t)
+
+(setq inhibit-startup-screen t)
 (load-theme 'monokai t)
