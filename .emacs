@@ -3,8 +3,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/no-elpa")
 
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -22,7 +20,7 @@
 
 ;; List of packages
 (setq package-list 
-      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request))
+      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request multi-term))
 
 ;; List available packages
 (unless package-archive-contents
@@ -32,6 +30,10 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+
 
 ;; Start as a server
 ;; (server-start)
