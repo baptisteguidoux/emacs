@@ -91,6 +91,8 @@
 
 ;; Default auto-complete config
 (ac-config-default)
+;; Distinguish case
+(setq ac-ignore-case nil)
 ;; ac-etags
 (eval-after-load "etags"
   '(progn
