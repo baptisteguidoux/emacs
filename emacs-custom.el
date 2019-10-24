@@ -22,7 +22,7 @@
 
 ;; List of packages
 (setq package-list 
-      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request auto-complete))
+      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request auto-complete ac-etags))
 
 ;; List available packages
 (unless package-archive-contents
@@ -91,6 +91,13 @@
 
 ;; Default auto-complete config
 (ac-config-default)
+;; ac-etags
+(eval-after-load "etags"
+  '(progn
+     (ac-etags-setup)))
+
+(add-hook 'python-mode 'ac-etags-ac-setup)
+(add-hook 'javascript-mode 'ac-etags-setup)
 
 ;; Font settings
 (set-face-attribute 'default nil
@@ -111,7 +118,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auto-complete zenburn-theme spacemacs-theme yaml-mode sphinx-doc slime request qml-mode nov neotree json-mode gotham-theme flycheck dracula-theme autopair))))
+    (ac-etags auto-complete zenburn-theme spacemacs-theme yaml-mode sphinx-doc slime request qml-mode nov neotree json-mode gotham-theme flycheck dracula-theme autopair))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
