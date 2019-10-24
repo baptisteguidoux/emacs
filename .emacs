@@ -3,6 +3,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/no-elpa")
 
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -20,7 +22,7 @@
 
 ;; List of packages
 (setq package-list 
-      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request multi-term))
+      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request auto-complete))
 
 ;; List available packages
 (unless package-archive-contents
@@ -30,10 +32,6 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
-
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
-
 
 ;; Start as a server
 ;; (server-start)
@@ -91,6 +89,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Default auto-complete config
+(ac-config-default)
+
 ;; Font settings
 (set-face-attribute 'default nil
 		    :font "Monospace 10"
@@ -99,6 +100,9 @@
 		    :weight  'normal
 		    :width 'normal)
 
+;; comment // uncomment region key binding
+(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-u") 'uncomment-region)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -107,10 +111,11 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zenburn-theme spacemacs-theme yaml-mode sphinx-doc slime request qml-mode nov neotree json-mode gotham-theme flycheck dracula-theme autopair))))
+    (auto-complete zenburn-theme spacemacs-theme yaml-mode sphinx-doc slime request qml-mode nov neotree json-mode gotham-theme flycheck dracula-theme autopair))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
