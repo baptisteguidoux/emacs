@@ -3,8 +3,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/no-elpa")
 
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -22,7 +20,7 @@
 
 ;; List of packages
 (setq package-list 
-      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request auto-complete ac-etags))
+      '(zenburn-theme flycheck autopair sphinx-doc neotree slime request auto-complete ac-etags multi-term))
 
 ;; List available packages
 (unless package-archive-contents
@@ -76,6 +74,10 @@
 
 ;; Copy paste outside emacs
 (setq x-select-enable-clipboard t)
+
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+
 
 ;; SBCL as default Lisp
 (setq inferior-lisp-program "/homes/guiba/sbcl/bin/sbcl")
