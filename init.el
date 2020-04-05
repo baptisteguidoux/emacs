@@ -22,7 +22,7 @@ There are two things you can do about this warning:
 
 ;; List of packages
 (setq package-list 
-      '(autopair neotree doom-themes))
+      '(autopair neotree doom-themes csharp-mode))
 
 ;; Install missing packages
 (dolist (package package-list)
