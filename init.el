@@ -30,4 +30,4 @@ There are two things you can do about this warning:
     (package-install package)))
 
 ;; Theme
-(load-theme 'doom-nord-light)
+(load-theme 'doom-nord-light t)
